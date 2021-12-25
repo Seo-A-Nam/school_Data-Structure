@@ -136,7 +136,7 @@ void    search_txt(vector<string> *s)
         cin >> input; // 입력 + (space) + (엔터). 혹은 입력 + (엔터 두번)
         if (input.compare(".") == 0)
         {
-            cout << "____________________ Terminate the Program ____________________"<<endl;
+            cout << "____________________ Terminate the Program ____________________"<<endl <<endl;
             break;
         }
         ret = binarySearch_recursion((*s), input, 0, (*s).size() - 1);
