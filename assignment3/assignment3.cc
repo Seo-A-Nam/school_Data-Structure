@@ -132,7 +132,7 @@ void    search_txt(vector<string> *s)
     while (1)
     {
         cout << "================= Type the word you wanna find ================"<<endl;
-        cout << "(Type dot(.) to end the program)" << endl;
+        cout << "(Type dot(.) to end the program)" << endl << endl;
         cin >> input; // 입력 + (space) + (엔터). 혹은 입력 + (엔터 두번)
         if (input.compare(".") == 0)
         {
@@ -143,10 +143,10 @@ void    search_txt(vector<string> *s)
         if (ret == -1)
         {
             cout << "The string doesn't exsit in a file!" << endl; // 삭제 가능 (불필요)
-            cout << "Position of the word : " << -1 <<endl; // 중요
+            cout << "Position of the word : " << -1 <<endl <<endl; // 중요
         }
         else
-            cout << "Position of the word : " << ret + 1 <<endl;
+            cout << "Position of the word : " << ret + 1 <<endl <<endl;
     }
 }
 
@@ -161,7 +161,7 @@ int     main()
     cout << "------------------------ After Sort --------------------------" << endl;
     display_txt(words);
     removeDup_txt(&words);
-    cout << "------------------- After Duplicate Remove --------------------" << endl;
+    cout << "----------------- After Removing Duplication ------------------" << endl;
     display_txt(words);
     search_txt(&words);
     return (0);
