@@ -22,7 +22,7 @@ void    display_txt(vector<string> s)
         cout << "index ["<< i + 1<< "] : "<< s[i] << endl;
     }
     cout <<endl;
-}
+} // 문자열의 인덱스 : 문자열 쌍으로 모든 단어들을 출력.
 
 int     binarySearch_recursion(vector<string> s, string input, int left, int right)
 { // 여기서 s를 포인터로 안보내는 이유 : 여기서는 문자열 비교-확인만 하고 직접적인 삭제/수정 등은 하지 않기 때문에.
@@ -41,7 +41,7 @@ int     binarySearch_recursion(vector<string> s, string input, int left, int rig
     return (-1);
 }
 /*
-* 재귀적 binary Search(이진 탐색)을 사용한다
+* 재귀적 binary Search(이진 탐색)을 사용하여 단어 리스트 속 단어의 위치를 검색한다.
 * 주어진 문자list에서 input이라는 문자를 찾아 그 인덱스를 반환한다.
 * 찾지 못한다면 -1 반환.
 */
@@ -98,26 +98,31 @@ bool    get_fileString(vector<string> *words)
 {
     string filename("input.txt");
     string word;
+    ifstream input_file(filename); // 파일 열어줌.
 
-    ifstream input_file(filename);
     if (!input_file.is_open())
     {
         cerr << "[error] Could not open the file - '" << filename << "'" << endl;
         return (false);
     } // 파일이 열리지 않았을 경우 오류처리
-    cout << "---------------------- File Content ------------------------" << endl;
+    cout << "----------------------- File Content -------------------------" << endl << endl;
     while (input_file >> word) 
     {
         cout << word <<" ";
         (*words).push_back(word);
     } 
-    cout << endl; // 여기 while() 돌면서 파일 내용도 전부 출력함.
-    /* 추출 연산자(>>) 호출. 
+    cout << endl << endl; // 여기 while() 돌면서 파일 내용도 전부 출력함.
+    /* 
+    * 추출 연산자(>>) 호출. 
     * 첫번째 공백 문자를 만나기 전에 자동으로 첫 번째 단어를 읽는 문자열 변수로 리디렉션 
     */
-    input_file.close();
+    input_file.close(); // 파일 닫아줌
     return (true);
 } // 파일로부터 단어들을 읽어옴.
+/*
+* 주의! : ifstream으로 열면 cin처럼 공백, 엔터 등으로 입력을 구분한다. 
+* 따라서 여러 개 공백을 읽어올 수 없고 단어만 하나씩 받아온다... (교수님께 문의하기)
+*/
 
 void    search_txt(vector<string> *s)
 {
