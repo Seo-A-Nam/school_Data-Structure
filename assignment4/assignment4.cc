@@ -126,12 +126,15 @@ bool    Polynomial::process_output()
         // =========================== 계수 표시 ===============================
         if (poly[i].first == 1 && poly[i].second == 0) // 상수항일 경우에 1이 출력되도록 함.
             tmp = to_string(poly[i].first);
-        else if (poly[i].first != 1) // 상수항이 아닌데 계수가 1일 경우는 1이 나오지 않도록 함 (ex : 1x (x), x (o))
-            tmp = to_string(poly[i].first);
+        else if (poly[i].first == 1 && poly[i].second != 0); // 상수항이 아닌데 계수가 1일 경우는 1이 나오지 않도록 함 (ex : 1x (x), x (o))
         else if (poly[i].first < 0)
         {
-            tmp = (string)"(" + tmp + (string)")"; // 보통 "" 이거는 (const char *)형식이길래 string에 append() 해주려고 string으로 캐스팅해줌.
+            tmp.append((string)"("); // 캐스팅 이유 : "" 이거는 보통 (const char *)형이라서.
+            tmp.append((to_string(poly[i].first)));
+            tmp.append((string)")");
         } // 계수가 음수일 때 괄호로 묶어줌 
+        else
+            tmp = to_string(poly[i].first); // 그 외의 경우. 계수의 숫자를 출력.
         // ======================= 차수 (차수, 제곱표시) =========================
         output.append(tmp);
         if (poly[i].second == 0); // 차수가 0일 때 (상수일 때)는 아무것도 안함. (뒤에 x 안 붙여줌.)
