@@ -4,7 +4,6 @@
 #include <vector>
 #include <utility> // pair 함수 있음
 #include <cmath> // pow()
-#include <unistd.h> // sleep()
 
 using namespace std;
 
