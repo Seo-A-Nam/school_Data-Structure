@@ -156,7 +156,7 @@ bool    Polynomial::process_output()
     return (true);
 } // vector<<pair<int,int>> 타입의 poly 멤버변수를 처리하여 다항식의 문자열 형태로 변환해줌.
 
-bool    Polynomial::process_input()
+bool    Polynomial::process_input() // 지수 음수 경우 이외에도 다른 부분도 예외처리해도 되는 지 문의하기.
 {
     vector<pair <int, int> > poly;
     string input = this->get_input();
