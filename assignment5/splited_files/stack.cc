@@ -77,19 +77,19 @@ StackNode* Stack::peekLS()
   	return (this->stack->pTopElement);
 }
 
-void  Stack::displayLS()
-{
-    StackNode   *pNode = this->stack->pTopElement;
+// void  Stack::displayLS()
+// {
+//     StackNode   *pNode = this->stack->pTopElement;
 
-    cout<<"Stack Status  ==================================="<<endl;
-    for(int i = 0; i < this->stack->currentElementCount; i++)
-    {
-        cout << pNode->data << " ";
-        pNode = pNode->pLink;
-    }
-    cout << endl;
-    cout<<"================================================="<<endl;
-}
+//     cout<<"Stack Status  ==================================="<<endl;
+//     for(int i = 0; i < this->stack->currentElementCount; i++)
+//     {
+//         cout << pNode->data << " ";
+//         pNode = pNode->pLink;
+//     }
+//     cout << endl;
+//     cout<<"================================================="<<endl;
+// }
 
 bool    Stack::isLinkedStackEmpty()
 {
