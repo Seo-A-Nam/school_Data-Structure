@@ -22,7 +22,8 @@ int     main()
       }
       else
       {
-        Stack *a = new Stack;
+        Stack<string> *a = new Stack<string>;
+        Stack<int> *b = new Stack<int>;
         vector<string> output; // 입력된 요소를 띄어쓰기 넣어 출력해야하기 때문에 이렇게 선언함.
         // ================ 중위 수식을 후위 수식으로 바꿈 ===============
         process_postfix(a, &input, &output);
@@ -32,11 +33,12 @@ int     main()
         }
         cout <<endl;
         // ================ 후위 수식을 이용해서 연산함 ==================
-        calculate_postfix(a, output);
+        calculate_postfix(b, output);
         delete a;
+        delete b;
         break;
       }
   }
-  //system("leaks a.out"); // 메모리 누수 체크
+  system("leaks a.out"); // 메모리 누수 체크
   return (0);
 }

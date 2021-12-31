@@ -1,15 +1,15 @@
 #include "assigment5.h"
 
-void  calculate(Stack *a, vector<string> output)
+void  calculate(Stack<int> *a, vector<string> output)
 {
-  StackNode *node;
+  StackNode<int> *node;
 
   int n1, n2, result;
   node = a->popLS();
-  n1 = stoi(node->data);
+  n1 = node->data;
   free(node);
   node = a->popLS();
-  n2 = stoi(node->data);
+  n2 = node->data;
   free(node);
   if (output[0].compare((string)"**") == 0)
   {
@@ -31,10 +31,10 @@ void  calculate(Stack *a, vector<string> output)
   {
     result = n2 - n1;
   }
-  a->pushLS(to_string(result));
+  a->pushLS(result);
 } // 스택에 있는 연산자와 숫자 2개를 뽑아서 연산해줌
 
-void  calculate_postfix(Stack *a, vector<string> output)
+void  calculate_postfix(Stack<int> *a, vector<string> output)
 {
   while (1)
   {
@@ -46,7 +46,7 @@ void  calculate_postfix(Stack *a, vector<string> output)
     if (is_operator((char)output[0][0]) == true || output[0].compare((string)"**") == 0)
       calculate(a, output);
     else
-      a->pushLS(output[0]);
+      a->pushLS(stoi(output[0]));
     output.erase(output.begin());
   }
 } // 후위 연산식을 계산한다.

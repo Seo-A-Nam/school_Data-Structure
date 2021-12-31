@@ -10,9 +10,9 @@ bool  is_operator(char c)
 bool    check_bracket_matching(string input)
 {
   int i = 0;
-  StackNode *tmp;
+  StackNode<string> *tmp;
   string ch, prev;
-  Stack *match = new Stack;
+  Stack<string> *match = new Stack<string>;
 
   while (input[i])
   {

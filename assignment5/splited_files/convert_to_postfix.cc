@@ -12,20 +12,20 @@ int   op_number(string a)
   return (-1);
 } // 몇 번째 operator인지 -> 이걸 인덱스로해서 isp, icp의 값을 찾음.
 
-void    popAll(Stack *a, vector<string> *output)
+void    popAll(Stack<string> *a, vector<string> *output)
 {
   while (1)
   {
     if (a->isLinkedStackEmpty())
       break;
-    StackNode *node = a->popLS();
+    StackNode<string> *node = a->popLS();
     if (node->data != ")" && node->data != "(")
       output->push_back(node->data);
     free(node);
   }
 } // 모든 연산자를 스택에서 pop하고 후위 연산식에 넣어준다.
 
-void    push_operand(Stack *a, char op, vector<string> *output)
+void    push_operand(Stack<string> *a, char op, vector<string> *output)
 {
   //string op[7] = {"**", ")", "/","*","-", "+", "("};
   int isp[7] = {3, -1, 2, 2, 1, 1, 0}; // In Stack Priority : 스택에 저장된 연산자 우선순위.
@@ -48,7 +48,7 @@ void    push_operand(Stack *a, char op, vector<string> *output)
     q = op_number(a->peekLS()->data);
     if (a->isLinkedStackEmpty())
       break;
-    StackNode *node = a->popLS();
+    StackNode<string> *node = a->popLS();
     if (q != 1 && q != 6)
       output->push_back(node->data);
     free(node);
@@ -57,13 +57,13 @@ void    push_operand(Stack *a, char op, vector<string> *output)
   a->pushLS(s);
 } // 후위 연산식에 연산자를 넣는다.
 
-void    push_OpLeft(Stack *a, vector<string> *output)
+void    push_OpLeft(Stack<string> *a, vector<string> *output)
 {
   while (1)
   {
     if (a->isLinkedStackEmpty() == true)
       break;
-    StackNode *node = a->popLS();
+    StackNode<string> *node = a->popLS();
     int q = op_number(node->data);
     if (q != 1 && q != 6)
       output->push_back(node->data);
@@ -71,7 +71,7 @@ void    push_OpLeft(Stack *a, vector<string> *output)
   }
 } // 다 끝나고 스택에 남아있는 연산자들을 후위연산 수식 뒤에 모두 넣어준다. 
 
-bool    process_postfix(Stack *a, string *input, vector<string> *output)
+bool    process_postfix(Stack<string> *a, string *input, vector<string> *output)
 {
     string op[7] = {"**", ")", "/","*","-", "+", "("};
     int size = (*input).size();

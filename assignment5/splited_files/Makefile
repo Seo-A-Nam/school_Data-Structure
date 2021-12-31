@@ -1,7 +1,7 @@
 SRCS	=	stack.cc check_input.cc convert_to_postfix.cc \
 			calculate.cc main.cc \
 
-OBJS	=	$(SRCS:.c=.o)
+OBJS	=	$(SRCS:.cc=.o)
 
 CC		=	g++
 
