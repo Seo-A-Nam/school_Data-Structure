@@ -404,7 +404,7 @@ int     main()
         // ================ 후위 수식을 이용해서 연산함 ==================
         calculate_postfix(a, output);
         delete a;
-        //break;
+        break;
       }
   }
   //system("leaks a.out"); // 메모리 누수 체크
