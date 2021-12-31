@@ -83,7 +83,7 @@ bool    process_postfix(Stack<string> *a, string *input, vector<string> *output)
         a->pushLS(op[0]);
         i++;
         continue;
-      } // 제곱 연산자일 경우를 처리
+      } // 제곱 연산자일 경우 연산자 스택에 넣어주는 것은 따로 처리
       if (is_operator((*input)[i]))
       {
         push_operand(a, (*input)[i], output);

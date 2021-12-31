@@ -17,20 +17,32 @@ bool    check_bracket_matching(string input)
   while (input[i])
   {
     ch = "";
-    ch += input[i++];
+    ch += input[i];
     if (ch.compare("(") == 0)
       match->pushLS(ch);
     else if (ch.compare(")") == 0)
     {
+      if ((i > 0 && is_operator(input[i - 1])) || (i > 1 && input[i - 1] == '*' && input[i - 2] == '*'))
+      { // 닫는 괄호 바로 앞에 연산자가 오는 경우 예외처리.
+        delete match;
+        return (false);
+      }
       if (match->isLinkedStackEmpty() == true)
-        return (false); // 동일 타입의 괄호에서 왼쪽 괄호는 오른쪽 괄호보다 먼저 나와야 한다.
+      {
+        delete match; // 중요 : 리턴하기 전에 할당된 메모리 해제해야함! (메모리 누수 방지)
+        return (false); // 조건 : 동일 타입의 괄호에서 왼쪽 괄호는 오른쪽 괄호보다 먼저 나와야 한다.
+      }
       tmp = match->popLS();
       prev = tmp->data;
       free(tmp);
     }
+    i++;
   }
   if (match->isLinkedStackEmpty() == false)
-    return (false); // 왼쪽 괄호의 개수와 오른쪽의 괄호의 개수가 같아야한다.
+  {
+    delete match;
+    return (false); // 조건 : 왼쪽 괄호의 개수와 오른쪽의 괄호의 개수가 같아야한다.
+  }
   delete match;
   return (true);
 } // 입력값에서 괄호 형식이 올바른 지 체크한다.

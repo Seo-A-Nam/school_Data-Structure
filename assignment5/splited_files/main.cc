@@ -1,8 +1,4 @@
 #include "assigment5.h"
-/*
-* 여기에 아직 Template 클래스 사용 안함. 사용할 수 있도록 고치기.
-* 계산 시 stack에 int, string 모두를 넣을 수 있도록 ...
-*/
 
 int     main()
 {
@@ -10,6 +6,7 @@ int     main()
   while (1)
   { 
       cin >> input; // input 값에 띄어쓰기 포함되었는지 예외처리할 수 없음 (cin은 공백 나오면 입력 끝냄) 
+      // 조건 : 띄어쓰기 없이, 0~9 자연수 입력.
       if (input.compare((string)".") == 0)
       {
         cout << "==================== Terminate The Program ===================="<<endl;
@@ -18,7 +15,6 @@ int     main()
       else if (check_inputFormat(input) == false)
       {
         cout << "[error] Wrong input format"<<endl;
-        continue;
       }
       else
       {
@@ -39,6 +35,12 @@ int     main()
         break;
       }
   }
-  system("leaks a.out"); // 메모리 누수 체크
   return (0);
 }
+
+//  int main()
+// {
+//    test(); // 기존 main의 이름을 test로 바꾸어 돌린다.
+//    system("leaks a.out"); // 메모리 누수 체크
+//    return (0);
+//  }
